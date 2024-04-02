@@ -3,7 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/[...wordpressNode]": "pages/[...wordpressNode].js",
-  "/dashboard/posts/[tab]": "pages/dashboard/posts/[tab].js",
-  "/api/faust/[[...route]]": "pages/api/faust/[[...route]].js"
+  "/submission": "pages/submission.js",
+  "/dashboard/edit-profile/[tab]": "pages/dashboard/edit-profile/[tab].js",
+  "/dashboard/posts/[tab]": "pages/dashboard/posts/[tab].js"
 }
