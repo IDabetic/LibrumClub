@@ -2,9 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/sign-up": "pages/sign-up.js",
+  "/": "pages/index.js",
   "/api/faust/[[...route]]": "pages/api/faust/[[...route]].js",
   "/dashboard/edit-profile/[tab]": "pages/dashboard/edit-profile/[tab].js",
-  "/submission": "pages/submission.js",
-  "/preview": "pages/preview.js"
+  "/dashboard/posts/[tab]": "pages/dashboard/posts/[tab].js",
+  "/sign-up": "pages/sign-up.js",
+  "/submission": "pages/submission.js"
 }

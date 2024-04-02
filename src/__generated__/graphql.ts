@@ -714,7 +714,7 @@ export enum CommentStatusEnum {
   Hold = 'HOLD',
   /** Comments with the Spam status */
   Spam = 'SPAM',
-  /** Comments with the Bin status */
+  /** Comments with the Trash status */
   Trash = 'TRASH'
 }
 
@@ -15393,29 +15393,15 @@ export type TaxonomyToTermNodeConnectionPageInfo = PageInfo & TermNodeConnection
 };
 
 /** The template assigned to the node */
-export type Template_PageNoTitle = ContentTemplate & {
-  __typename?: 'Template_PageNoTitle';
+export type Template_Blank = ContentTemplate & {
+  __typename?: 'Template_Blank';
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
 };
 
 /** The template assigned to the node */
-export type Template_PageWithSidebar = ContentTemplate & {
-  __typename?: 'Template_PageWithSidebar';
-  /** The name of the template */
-  templateName?: Maybe<Scalars['String']['output']>;
-};
-
-/** The template assigned to the node */
-export type Template_PageWithWideImage = ContentTemplate & {
-  __typename?: 'Template_PageWithWideImage';
-  /** The name of the template */
-  templateName?: Maybe<Scalars['String']['output']>;
-};
-
-/** The template assigned to the node */
-export type Template_SingleWithSidebar = ContentTemplate & {
-  __typename?: 'Template_SingleWithSidebar';
+export type Template_BlogAlternative = ContentTemplate & {
+  __typename?: 'Template_BlogAlternative';
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
 };
