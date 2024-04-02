@@ -38,11 +38,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/dashboard/posts/[tab].js"
     ],
-    "/sign-up": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/sign-up.js"
-    ],
     "/submission": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
