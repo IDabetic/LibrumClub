@@ -92,7 +92,7 @@
 
   "submissions-settings": {
     "enable": true,
-    "max_categories_allowed": 3,
+    "max_categories_allowed": 10,
     "max_tags_allowed": 5
   },
 
