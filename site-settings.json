@@ -73,8 +73,13 @@
     "enable": true
   },
   "top_banner": {
-    "text": "Librum Klub  - Izazivamo priče. Stvaramo autore.",
-    "enable": true
+    "description": "Librum Klub  - Izazivamo priče. Stvaramo autore.",
+    "enable": true,
+    "end_link": {
+      "url": "https://www.librum.club",
+      "new_tab": true,
+      "text": "Librum Klub  - Izazivamo priče. Stvaramo autore."
+    }
   },
   "newsletter_section": {
     "enable": true,
