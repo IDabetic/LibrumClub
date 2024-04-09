@@ -10,7 +10,7 @@ import { NC_SITE_SETTINGS } from "@/contains/site-settings";
 import getTrans from "@/utils/getTrans";
 
 const MAX_TAGS_LENGTH =
-  NC_SITE_SETTINGS["submissions-settings"].max_categories_allowed || 5;
+  NC_SITE_SETTINGS.submission_settings.max_categories_allowed || 5;
 
 interface Props {
   onChange: (categories: NcmazFcCategoryFullFieldsFragmentFragment[]) => void;
