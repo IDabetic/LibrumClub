@@ -37,7 +37,7 @@
   "site_info": {
     "site_title": "Librum Klub",
     "site_description": "Inovativni konsultantski self-publishing studio za sve pisce. U Librum klubu, autori mogu samostalno objavljivati svoja dela.",
-    "site_keywords": "Ncmaz Nextjs Blog",
+    "site_keywords": "Librum Klub",
     "site_author": "ChisNghiax",
     "site_email": "Your Email",
     "site_phone": "Your Phone",
@@ -46,7 +46,7 @@
     "site_state": "Your State",
     "site_zip": "Your Zip",
     "site_country": "Your Country",
-    "site_url": "https://www.yoursite.com",
+    "site_url": "https://www.librum.club",
     "site_logo": "/logo-light.png",
     "site_logo_light": "/logo.png",
     "site_favicon": "/favicon.png"
