@@ -48,8 +48,7 @@
     "site_country": "Your Country",
     "site_url": "https://www.librum.club",
     "site_logo": "/logo-light.png",
-    "site_logo_light": "/logo.png",
-    "site_favicon": "/favicon.ico"
+    "site_logo_light": "/logo.png"
   },
 
   "site_socials": [
