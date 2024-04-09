@@ -1,7 +1,7 @@
 {
   "version": "0.1.1",
 
-  "mailpoet_api_key": "your_mailpoet_api_key",
+  "mailpoet_api_key": "ef3228640d56877041f17eb14b236c7b",
   "mailpoet_list_id": "3",
   "subcription_widget": {
     "enable": true,
@@ -74,7 +74,7 @@
     ]
   },
   "submission_settings": {
-    "enable": true
+    "enable": false
   },
   "top_banner": {
     "description": "Librum Klub  - Izazivamo priče. Stvaramo autore.",
