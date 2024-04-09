@@ -19,8 +19,7 @@ const CreateBtn: FC<Props> = ({ className = "hidden md:block " }) => {
   const { openLoginModal } = useLoginModal();
   const T = getTrans();
 
-  if (NC_SITE_SETTINGS.submission_settings.enable === false) {
-
+  if (NC_SITE_SETTINGS["submissions-settings"].enable === false) {
     return null;
   }
 

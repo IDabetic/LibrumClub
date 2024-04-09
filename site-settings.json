@@ -1,7 +1,7 @@
 {
   "version": "0.1.1",
 
-  "mailpoet_api_key": "ef3228640d56877041f17eb14b236c7b",
+  "mailpoet_api_key": "your_mailpoet_api_key",
   "mailpoet_list_id": "3",
   "subcription_widget": {
     "enable": true,
@@ -11,8 +11,23 @@
     "success_message": "Thank you for subscribing. You're in!",
     "error_message": "Something went wrong. Please try again. If the problem persists, you can contact me."
   },
+  "newsletter_section": {
+    "enable": true,
+    "title": "Join our newsletter 🎉",
+    "description": "Read and share new perspectives on just about any topic. Everyone’s welcome.",
+    "right_image": "/images/SVG-subcribe2.png",
+    "features_list": ["Create a free account.", "Write your stories."]
+  },
+  "top_banner": {
+    "enable": true,
+    "description": "Librum Klub  - Izazivamo priče. Stvaramo autore.",
+    "end_link": {
+      "url": "#",
+      "text": "",
+      "new_tab": false
+    }
+  },
 
-  
   "top_category_section": {
     "enable": true,
     "title": "Discover top 10 categories",
@@ -22,77 +37,86 @@
   "site_info": {
     "site_title": "Librum Klub",
     "site_description": "Inovativni konsultantski self-publishing studio za sve pisce. U Librum klubu, autori mogu samostalno objavljivati svoja dela.",
+    "site_keywords": "Ncmaz Nextjs Blog",
+    "site_author": "ChisNghiax",
+    "site_email": "Your Email",
+    "site_phone": "Your Phone",
+    "site_address": "Your Address",
+    "site_city": "Your City",
+    "site_state": "Your State",
+    "site_zip": "Your Zip",
+    "site_country": "Your Country",
+    "site_url": "https://www.yoursite.com",
     "site_logo": "/logo.png",
     "site_logo_light": "/logo-light.png",
-    "site_favicon": "/librum-klub-favicon.png"
+    "site_favicon": "/favicon.png"
   },
 
   "site_socials": [
     {
-      "id": "instagram",
+      "name": "facebook",
+      "url": "https://www.facebook.com/yourfacebookpage",
+      "icon": "/images/socials/facebook.svg",
+      "description": "Follow us on Facebook"
+    },
+    {
       "name": "instagram",
       "url": "https://www.instagram.com/librum.rs/",
-      "icon": "/images/socials/instagram.png"
+      "icon": "/images/socials/instagram.png",
+      "description": "Follow us on Twitter"
     },
+
     {
-      "id": "facebook",
-      "name": "facebook",
-      "url": "https://www.facebook.com/librum.rs",
-      "icon": "/images/socials/facebook.png"
-    },
-    {
-      "id": "linkedin",
       "name": "linkedin",
       "url": "https://www.linkedin.com/company/librum-rs/",
-      "icon": "/images/socials/linkedin.png"
+      "icon": "/images/socials/linkedin.png",
+      "description": "Follow us on Github"
     },
     {
-      "id": "pinterest",
       "name": "pinterest",
       "url": "https://www.pinterest.com/librum_studio/",
-      "icon": "/images/socials/pinterest.png"
+      "icon": "/images/socials/pinterest.png",
+      "description": "Follow us on Pinterest"
     },
     {
-      "id": "tiktok",
       "name": "tiktok",
       "url": "https://www.tiktok.com/@librum.rs",
-      "icon": "/images/socials/tiktok.png"
+      "icon": "/images/socials/tiktok.svg",
+      "description": "Follow us on Tiktok"
     }
   ],
-  
+
   "site_footer": {
-    "all_rights_reserved_text": "© 2024 Librum Klub. Sva prava zadržana.",
-    "links": [
-      {
-        "text": "Politika privatnosti",
-        "url": "/politika-privatnosti"
-      },
-      {
-        "text": "Uslovi korišćenja",
-        "url": "/uslovi-koriscenja"
-      }
-    ]
+    "all_rights_reserved_text": "© 2024 Librum Klub. Sva prava zadržana."
   },
-  "submission_settings": {
+
+  "submissions-settings": {
     "enable": true,
-    "max_categories_allowed": 5
+    "max_categories_allowed": 3,
+    "max_tags_allowed": 5
   },
-  "top_banner": {
-    "description": "Librum Klub  - Izazivamo priče. Stvaramo autore.",
-    "enable": true,
-    "end_link": {
-      "url": "https://www.librum.club",
-      "new_tab": true,
-      "text": "Librum Klub  - Izazivamo priče. Stvaramo autore."
+
+  "signUp_page": {
+    "title": "Create an account",
+    "sub_title": "Enter your email below to create your account.",
+    "blockquote": {
+      "text": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.",
+      "author": "Sofia Davis"
     }
   },
-  "newsletter_section": {
-    "enable": true,
-    "text": "Prijavite se za naše novosti i ostanite u toku sa najnovijim izdanjima i događajima."
-  },
-  "subscription_widget": {
-    "enable": true,
-    "text": "Pretplatite se na Librum Klub za ekskluzivni pristup novim delima."
+
+  "signIn_page": {
+    "title": "Sign in to your account",
+    "sub_title": "Enter your email below to sign in to your account.",
+    "blockquote": {
+      "text": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.",
+      "author": "Sofia Davis"
+    },
+    "lost_password": {
+      "is_use_lostpassword_default_of_wp": false,
+      "message": "Lost password not implemented yet! Please contact admmin for support.",
+      "url_lostpassword_default_of_wp": "https://yourwebsite.com/wp-login.php?action=lostpassword"
+    }
   },
 
   "mobile_nav_sidebar": {
