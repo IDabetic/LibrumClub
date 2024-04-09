@@ -4,7 +4,7 @@
   "mailpoet_api_key": "your_mailpoet_api_key",
   "mailpoet_list_id": "3",
   "subcription_widget": {
-    "enable": true,
+    "enable": false,
     "title": "Stay up to date",
     "description": "Get notified when I publish something new, and unsubscribe at any time.",
     "placeholder": "Enter your email address",
@@ -12,7 +12,7 @@
     "error_message": "Something went wrong. Please try again. If the problem persists, you can contact me."
   },
   "newsletter_section": {
-    "enable": true,
+    "enable": false,
     "title": "Join our newsletter 🎉",
     "description": "Read and share new perspectives on just about any topic. Everyone’s welcome.",
     "right_image": "/images/SVG-subcribe2.png",
@@ -22,7 +22,7 @@
     "enable": true,
     "description": "Librum Klub  - Izazivamo priče. Stvaramo autore.",
     "end_link": {
-      "url": "#",
+      "url": "https://www.librum.club/",
       "text": "",
       "new_tab": false
     }
@@ -49,7 +49,7 @@
     "site_url": "https://www.librum.club",
     "site_logo": "/logo-light.png",
     "site_logo_light": "/logo.png",
-    "site_favicon": "/favicon.png"
+    "site_favicon": "/logo.svg"
   },
 
   "site_socials": [
