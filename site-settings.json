@@ -22,8 +22,8 @@
   "site_info": {
     "site_title": "Librum Klub",
     "site_description": "Inovativni konsultantski self-publishing studio za sve pisce. U Librum klubu, autori mogu samostalno objavljivati svoja dela.",
-    "site_logo": "/librum-klub-logo.png",
-    "site_logo_light": "/librum-klub-logo-light.png",
+    "site_logo": "/logo.png",
+    "site_logo_light": "/logo-light.png",
     "site_favicon": "/librum-klub-favicon.png"
   },
 
