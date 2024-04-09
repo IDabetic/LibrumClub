@@ -30,34 +30,38 @@
   "site_socials": [
     {
       "id": "instagram",
-      "link": "https://www.instagram.com/librum.rs/",
-      "icon_path": "/images/socials/instagram.png"
+      "name": "instagram",
+      "url": "https://www.instagram.com/librum.rs/",
+      "icon": "/images/socials/instagram.png"
     },
     {
       "id": "facebook",
-      "link": "https://www.facebook.com/librum.rs",
-      "icon_path": "/images/socials/facebook.png"
+      "name": "facebook",
+      "url": "https://www.facebook.com/librum.rs",
+      "icon": "/images/socials/facebook.png"
     },
-
     {
       "id": "linkedin",
-      "link": "https://www.linkedin.com/company/librum-rs/",
-      "icon_path": "/images/socials/linkedin.png"
+      "name": "linkedin",
+      "url": "https://www.linkedin.com/company/librum-rs/",
+      "icon": "/images/socials/linkedin.png"
     },
     {
       "id": "pinterest",
-      "link": "https://www.pinterest.com/librum_studio/",
-      "icon_path": "/images/socials/pinterest.png"
+      "name": "pinterest",
+      "url": "https://www.pinterest.com/librum_studio/",
+      "icon": "/images/socials/pinterest.png"
     },
     {
       "id": "tiktok",
-      "link": "https://www.tiktok.com/@librum.rs",
-      "icon_path": "/images/socials/tiktok.png"
+      "name": "tiktok",
+      "url": "https://www.tiktok.com/@librum.rs",
+      "icon": "/images/socials/tiktok.png"
     }
   ],
-
+  
   "site_footer": {
-    "text": "© 2024 Librum Klub. Sva prava zadržana.",
+    "all_rights_reserved_text": "© 2024 Librum Klub. Sva prava zadržana.",
     "links": [
       {
         "text": "Politika privatnosti",
