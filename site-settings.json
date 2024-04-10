@@ -97,47 +97,47 @@
   },
 
   "signUp_page": {
-    "title": "Create an account",
-    "sub_title": "Enter your email below to create your account.",
+    "title": "Kreiraj profil",
+    "sub_title": "Unesi svoju email adresu ispod kako bi kreirao profil.",
     "blockquote": {
-      "text": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.",
-      "author": "Sofia Davis"
+      "text": "Librum je inovativan servis koji mi je pomogao da objavim knjigu.",
+      "author": "Mirjana"
     }
   },
 
   "signIn_page": {
-    "title": "Sign in to your account",
-    "sub_title": "Enter your email below to sign in to your account.",
+    "title": "Prijavi se na svoj profil",
+    "sub_title": "Unesi svoju email adresu ispod da se prijaviš.",
     "blockquote": {
-      "text": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.",
-      "author": "Sofia Davis"
+      "text": "Librum mi je pomogao u strategiji prodaje svoje poslednje knjige.",
+      "author": "Igor"
     },
     "lost_password": {
       "is_use_lostpassword_default_of_wp": false,
-      "message": "Lost password not implemented yet! Please contact admmin for support.",
-      "url_lostpassword_default_of_wp": "https://yourwebsite.com/wp-login.php?action=lostpassword"
+      "message": "Ukoliko želiš da resetuješ lozinku pošalji mejl na podrska@librum.rs",
+      "url_lostpassword_default_of_wp": "https://librum.club/wp-login.php?action=lostpassword"
     }
   },
 
   "mobile_nav_sidebar": {
-    "description": "Discover the most outstanding articles on all topics of life. Write your stories and share them with the community. "
+    "description": "Podeli svoje priče i pesme sa zajednicom."
   },
   "help_page": {
-    "uri": "/helps",
-    "title": "Helps",
-    "sub_title": "Read and share new perspectives on just about any topic. Everyone’s welcome."
+    "uri": "/podrska",
+    "title": "Podrška",
+    "sub_title": "Za one koji pišu i čitaju"
   },
   "document_page": {
-    "uri": "/documents",
-    "title": "Documents",
-    "sub_title": "Read and share new perspectives on just about any topic. Everyone’s welcome."
+    "uri": "/librum-baza-znanja",
+    "title": "Baza znanja",
+    "sub_title": "Za one koji pišu i čitaju"
   },
   "cookies_policy_page": {
-    "uri": "#"
+    "uri": "uslovi-koriscenja"
   },
 
   "empty_state": {
-    "title": "No results found.",
-    "description": "We couldn’t find any results. Try for something else."
+    "title": "Nema pronađenih rezultata.",
+    "description": "Nema rezultata. Probaj druge reči da pretražiš."
   }
 }
