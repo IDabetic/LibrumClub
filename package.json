@@ -1,4 +1,16 @@
 {
+  "contributors": [
+    {
+      "email": "vuks89@gmail.com",
+      "name": "Vuk Stankovic",
+      "url": "https://github.com/vuk"
+    },
+    {
+      "email": "edorizvic2@gmail.com",
+      "name": "Edo Rizvic",
+      "url": "https://github.com/Flashmaxi"
+    }
+  ],
   "private": true,
   "scripts": {
     "dev": "npm run generate && concurrently \"faust dev\" \"npm run watch-codegen\"",
