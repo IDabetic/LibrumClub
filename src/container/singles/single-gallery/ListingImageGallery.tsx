@@ -7,9 +7,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { NcmazFcImageHasDetailFieldsFragment } from "@/__generated__/graphql";
 import NextBtn from "@/components/NextPrev/NextBtn";
 import PrevBtn from "@/components/NextPrev/PrevBtn";
-import { useWindowSize } from "react-use";
 import SocialsShareDropdown from "@/components/SocialsShareDropdown/SocialsShareDropdown";
 import MyImage from "@/components/MyImage";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface Props {
   images?: NcmazFcImageHasDetailFieldsFragment[];

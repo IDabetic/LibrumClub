@@ -58,6 +58,7 @@ const SingleHeader4: FC<SingleHeader4Props> = ({
           width={featuredImage?.mediaDetails?.width || 1000}
           height={featuredImage?.mediaDetails?.height || 750}
           sizes="(max-width: 1024px) 100vw, 1280px"
+          enableDefaultPlaceholder
           priority
         />
 

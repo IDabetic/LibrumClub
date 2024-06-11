@@ -22,7 +22,6 @@ import { RootState } from "@/stores/store";
 import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
 import { TPostCard } from "@/components/Card2/Card2";
 import { useRouter } from "next/router";
-import { useTimeoutFn } from "react-use";
 import { TCategoryCardFull } from "@/components/CardCategory1/CardCategory1";
 import SingleTypeAudio from "@/container/singles/single-audio/single-audio";
 import SingleTypeVideo from "@/container/singles/single-video/single-video";
@@ -59,10 +58,16 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
   );
   const { viewer } = useSelector((state: RootState) => state.viewer);
   const [isUpdateViewCount, setIsUpdateViewCount] = useState(false);
-  const [, , resetIsUpdateViewCount] = useTimeoutFn(
-    () => setIsUpdateViewCount(true),
-    50000
-  );
+
+  useEffect(() => {
+    const timeOutUpdateViewCount = setTimeout(() => {
+      setIsUpdateViewCount(true);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timeOutUpdateViewCount);
+    };
+  }, []);
 
   const _post = props.data?.post || {};
   const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || [];
@@ -94,11 +99,6 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
       },
     }
   );
-
-  //
-  useEffect(() => {
-    resetIsUpdateViewCount();
-  }, []);
 
   // update view count
   useEffect(() => {

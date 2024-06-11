@@ -1,98 +1,111 @@
-import { useQuery } from "@apollo/client";
-import { getApolloAuthClient, useAuth } from "@faustwp/core";
-import { ReactNode, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useAuth } from '@faustwp/core'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
-  updateViewer as updateViewerToStore,
-  removeAll as removeAllViewerDataFromStore,
-  updateAuthorizedUser,
-} from "@/stores/viewer/viewerSlice";
-import { updateGeneralSettings } from "@/stores/genneral-settings/generalSettingsSlice";
-import useInitGetAndUpdateViewerReactionPosts from "@/hooks/useInitGetAndUpdateViewerReactionPosts";
-import { GET_SITE_VIEWER } from "@/fragments/queries";
-import ControlSettingsDemo from "./ControlSettingsDemo";
-import CookiestBoxPopover from "@/components/CookiestBoxPopover";
-import errorHandling from "@/utils/errorHandling";
-import MusicPlayer from "@/components/MusicPlayer/MusicPlayer";
-import { initLocalPostsSavedListFromLocalstored } from "@/stores/localPostSavedList/localPostsSavedListSlice";
+	updateViewer as updateViewerToStore,
+	updateAuthorizedUser,
+} from '@/stores/viewer/viewerSlice'
+import { updateGeneralSettings } from '@/stores/general-settings/generalSettingsSlice'
+import ControlSettingsDemo from './ControlSettingsDemo'
+import CookiestBoxPopover from '@/components/CookiestBoxPopover'
+import MusicPlayer from '@/components/MusicPlayer/MusicPlayer'
+import { initLocalPostsSavedListFromLocalstored } from '@/stores/localPostSavedList/localPostsSavedListSlice'
+import { usePathname } from 'next/navigation'
+import { CMSUserMetaResponseData } from '@/pages/api/cms-user-meta/[id]'
+import { addViewerReactionPosts } from '@/stores/viewer/viewerSlice'
+import { CMSReactionPostsResponseData } from '@/pages/api/cms-reaction-posts-by-reaction/[...param]'
 
 export function SiteWrapperChild({
-  children,
-  ...props
+	...props
 }: {
-  children: ReactNode;
-  __TEMPLATE_QUERY_DATA__: any;
+	__TEMPLATE_QUERY_DATA__: any
 }) {
-  const client = getApolloAuthClient();
-  const { isAuthenticated, isReady, loginUrl } = useAuth();
-  const dispatch = useDispatch();
-  const [refetchTimes, setRefetchTimes] = useState(0);
+	const { isAuthenticated, isReady, loginUrl, viewer } = useAuth()
+	const dispatch = useDispatch()
+	const pathname = usePathname()
 
-  // init get and update viewer reaction posts
-  useInitGetAndUpdateViewerReactionPosts();
+	const [isFirstFetchApis, setIsFirstFetchApis] = useState(false)
 
-  // useLazyQuery get viewer data
-  const { refetch } = useQuery(GET_SITE_VIEWER, {
-    client,
-    skip: !isAuthenticated,
-    context: { fetchOptions: { method: "GET" } },
-    onCompleted: (data) => {
-      // check is dev mode and log viewer data
-      if (data?.viewer?.databaseId) {
-        dispatch(updateViewerToStore(data?.viewer));
-      } else {
-        dispatch(removeAllViewerDataFromStore());
-      }
-    },
-    onError: (error) => {
-      console.log(123, "🎈 __________get_viewer_error____", error);
-      if (refetchTimes > 3) {
-        errorHandling(error);
-        return;
-      }
-      setRefetchTimes(refetchTimes + 1);
-      refetch();
-    },
-  });
+	useEffect(() => {
+		if (!isAuthenticated || !viewer?.userId || isFirstFetchApis) {
+			return
+		}
+		setIsFirstFetchApis(true)
+		dispatch(updateViewerToStore(viewer))
+		// get user meta data
+		fetch('/api/cms-user-meta/' + viewer?.userId)
+			.then(res => res.json())
+			.then((data: CMSUserMetaResponseData) => {
+				const user = data?.data?.user
+				if (user) {
+					dispatch(updateViewerToStore(user))
+				}
+			})
+			.catch(error => {
+				console.error(error)
+			})
 
-  // update general settings to store
-  useEffect(() => {
-    const generalSettings =
-      props?.__TEMPLATE_QUERY_DATA__?.generalSettings ?? {};
-    dispatch(updateGeneralSettings(generalSettings));
-  }, []);
+		// get user reaction posts data (save)
+		fetch(`/api/cms-reaction-posts-by-reaction/${viewer.userId}/save`)
+			.then(res => res.json())
+			.then((data: CMSReactionPostsResponseData) => {
+				const nodes = data?.data?.user?.userReactionPosts?.nodes || []
+				dispatch(addViewerReactionPosts(nodes))
+			})
+			.catch(error => {
+				console.error(error)
+			})
 
-  useEffect(() => {
-    const initialStateLocalSavedPosts: number[] = JSON.parse(
-      typeof window !== "undefined"
-        ? localStorage?.getItem("localSavedPosts") || "[]"
-        : "[]"
-    );
-    dispatch(
-      initLocalPostsSavedListFromLocalstored(initialStateLocalSavedPosts)
-    );
-  }, []);
+		// get user reaction posts data (like)
+		fetch(`/api/cms-reaction-posts-by-reaction/${viewer.userId}/like`)
+			.then(res => res.json())
+			.then((data: CMSReactionPostsResponseData) => {
+				const nodes = data?.data?.user?.userReactionPosts?.nodes || []
+				dispatch(addViewerReactionPosts(nodes))
+			})
+			.catch(error => {
+				console.error(error)
+			})
+	}, [isAuthenticated, viewer?.userId, isFirstFetchApis])
 
-  // update updateAuthorizedUser to store
-  useEffect(() => {
-    dispatch(
-      updateAuthorizedUser({
-        isAuthenticated,
-        isReady,
-        loginUrl,
-      })
-    );
-  }, [isAuthenticated]);
+	// update general settings to store
+	useEffect(() => {
+		const generalSettings =
+			props?.__TEMPLATE_QUERY_DATA__?.generalSettings ?? {}
+		dispatch(updateGeneralSettings(generalSettings))
+	}, [])
 
-  return (
-    <>
-      {children}
+	useEffect(() => {
+		const initialStateLocalSavedPosts: number[] = JSON.parse(
+			typeof window !== 'undefined'
+				? localStorage?.getItem('localSavedPosts') || '[]'
+				: '[]',
+		)
+		dispatch(
+			initLocalPostsSavedListFromLocalstored(initialStateLocalSavedPosts),
+		)
+	}, [])
 
-      <div>
-        <CookiestBoxPopover />
-        <ControlSettingsDemo />
-        <MusicPlayer />
-      </div>
-    </>
-  );
+	// update updateAuthorizedUser to store
+	useEffect(() => {
+		dispatch(
+			updateAuthorizedUser({
+				isAuthenticated,
+				isReady,
+				loginUrl,
+			}),
+		)
+	}, [isAuthenticated])
+
+	if (pathname?.startsWith('/ncmaz_for_ncmazfc_preview_blocks')) {
+		return null
+	}
+
+	return (
+		<div>
+			<CookiestBoxPopover />
+			<ControlSettingsDemo />
+			<MusicPlayer />
+		</div>
+	)
 }

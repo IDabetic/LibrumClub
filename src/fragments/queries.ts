@@ -1,36 +1,51 @@
 import { gql } from "@/__generated__";
 
-//
-export const GET_SITE_VIEWER = gql(/* GraphQL */ `
-  query GetViewerData {
-    viewer {
-      id
-      capabilities
-      url
-      uri
-      username
-      slug
-      name
-      email
-      description
+export const GET_POSTS_NCMAZ_META_BY_IDS = gql(/* GraphQL */ `
+  query QueryGetPostsNcmazMetadataByIds(
+    $in: [ID] = null
+    $first: Int = 100
+    $after: String = null
+  ) {
+    posts(first: $first, after: $after, where: { in: $in }) {
+      nodes {
+        databaseId
+        commentCount
+        ncPostMetaData {
+          ...NcmazFcPostMetaFullFields
+        }
+      }
+    }
+  }
+`);
+
+export const GET_ALL_REACTION_POSTS_BY_USER_AND_REACTION = gql(/* GraphQL */ `
+  query QueryGetAllReactionPostsByUserAndReaction(
+    $search: String = ""
+    $first: Int = 400
+    $id: ID!
+  ) {
+    user(id: $id, idType: DATABASE_ID) {
+      userReactionPosts(where: { search: $search }, first: $first) {
+        nodes {
+          id
+          title
+        }
+      }
+    }
+  }
+`);
+
+export const GET_USER_META_BY_ID = gql(`#graphql
+  query MyQueryGetCMSUser($id: ID!) {
+    user(id: $id, idType: DATABASE_ID) {
       databaseId
       ncUserMeta {
         ncBio
         featuredImage {
-          node {
-            ...NcmazFcImageFields
+            node {
+              ...NcmazFcImageFields
+            }
           }
-        }
-      }
-      roles {
-        edges {
-          node {
-            id
-            name
-            isRestricted
-            displayName
-          }
-        }
       }
     }
   }

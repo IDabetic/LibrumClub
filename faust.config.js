@@ -7,8 +7,6 @@ import possibleTypes from "./possibleTypes.json";
  **/
 export default setConfig({
   templates,
-  experimentalPlugins: [],
   possibleTypes,
-  useGETForQueries: false,
-  // usePersistedQueries: true,
+  usePersistedQueries: true,
 });

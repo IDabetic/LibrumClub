@@ -2,8 +2,7 @@ import React, { FC } from "react";
 import { Provider } from "react-redux";
 import { store } from "@/stores/store";
 import { SiteWrapperChild } from "./SiteWrapperChild";
-import { SkeletonTheme } from "react-loading-skeleton";
-import LoginModalProvider from "./LoginModalProvider";
+import LoginModal from "./LoginModal";
 
 interface SiteWrapperProviderProps {
   children: React.ReactNode;
@@ -16,11 +15,9 @@ const SiteWrapperProvider: FC<SiteWrapperProviderProps> = ({
 }) => {
   return (
     <Provider store={store}>
-      <SkeletonTheme>
-        <LoginModalProvider>
-          <SiteWrapperChild {...props}>{children}</SiteWrapperChild>
-        </LoginModalProvider>
-      </SkeletonTheme>
+      {children}
+      <SiteWrapperChild {...props} />
+      <LoginModal />
     </Provider>
   );
 };

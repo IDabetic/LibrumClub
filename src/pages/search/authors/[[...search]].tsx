@@ -49,7 +49,11 @@ const Page: FaustPage<SearchPageQueryGetUsersBySearchQuery> = (props) => {
     `),
     {
       notifyOnNetworkStatusChange: true,
-      context: { fetchOptions: { method: "GET" } },
+      context: {
+        fetchOptions: {
+          method: process.env.NEXT_PUBLIC_SITE_API_METHOD || "GET",
+        },
+      },
       variables: {
         search,
         first: GET_USERS_FIRST_COMMON,

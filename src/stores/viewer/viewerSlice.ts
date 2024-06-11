@@ -1,9 +1,11 @@
-import { GetViewerDataQuery } from "@/__generated__/graphql";
+import { ViewerType } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { MyQueryGetCmsUserQuery } from "@/__generated__/graphql";
 
+type MyViewerT = ViewerType & MyQueryGetCmsUserQuery["user"];
 export interface ViewerState {
-  viewer: GetViewerDataQuery["viewer"] | null;
+  viewer: Partial<MyViewerT> | null;
   viewerReactionPosts?:
     | {
         __typename?: "UserReactionPost" | undefined;
@@ -52,7 +54,12 @@ export const viewerSlice = createSlice({
       return state;
     },
     updateViewer: (state, action: PayloadAction<ViewerState["viewer"]>) => {
-      state.viewer = action.payload;
+      state.viewer = action.payload
+        ? {
+            ...(state.viewer || {}),
+            ...(action.payload || {}),
+          }
+        : null;
       return state;
     },
     updateViewerAllReactionPosts: (

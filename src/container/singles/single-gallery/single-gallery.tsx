@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import { Suspense } from "react";
 import { SingleType1Props } from "../single/single";
 import SingleHeader from "../SingleHeader";
 import { getPostDataFromPostFragment } from "@/utils/getPostDataFromPostFragment";
@@ -48,6 +47,7 @@ const SingleTypeGallery: FC<Props> = ({ post }) => {
           fill
           src={item?.sourceUrl || ""}
           sizes="(max-width: 320px) 50vw, (max-width: 1280px) 50vw, 750px"
+          enableDefaultPlaceholder
         />
         <div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity"></div>
       </div>
@@ -55,7 +55,7 @@ const SingleTypeGallery: FC<Props> = ({ post }) => {
   };
 
   return (
-    <Suspense fallback={<div />}>
+    <>
       <div className={`pt-8 lg:pt-16`}>
         {/* SINGLE HEADER */}
         <header className="container rounded-xl">
@@ -168,7 +168,7 @@ const SingleTypeGallery: FC<Props> = ({ post }) => {
           defaultImageIdx={currentImageIndex}
         />
       </div>
-    </Suspense>
+    </>
   );
 };
 

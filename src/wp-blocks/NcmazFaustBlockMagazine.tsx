@@ -16,14 +16,29 @@ const NcmazFaustBlockMagazine: WordPressBlock<
     return null;
   }
 
-  const renderMainClient = () => {
-    return <NcmazFaustBlockMagazineClient {...props} />;
-  };
+  let dataObject = null;
+  try {
+    // <div hidden> {json here} </div>
+    // use regex to remove the div tags
+    const jsontext = props.renderedHtml.replace(
+      /<div data-block-json-wrap hidden>|<\/div>/g,
+      ""
+    );
+
+    dataObject = JSON.parse(jsontext);
+  } catch (error) {
+    console.warn(
+      " 🚀 _____ NcmazFaustBlockMagazine JSON.parse error, need to update the Ncmaz-faust-core plugin! "
+    );
+  }
 
   return (
     <div className={`relative not-prose ${hasBackground ? "py-16" : ""}`}>
-      <div dangerouslySetInnerHTML={{ __html: props.renderedHtml || "" }}></div>
-      {renderMainClient()}
+      {dataObject === null && (
+        <div dangerouslySetInnerHTML={{ __html: props.renderedHtml || "" }} />
+      )}
+
+      <NcmazFaustBlockMagazineClient {...props} dataObject={dataObject} />
     </div>
   );
 };

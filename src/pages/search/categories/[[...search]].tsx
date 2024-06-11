@@ -46,7 +46,11 @@ const Page: FaustPage<SearchPageQueryGetCategoriesBySearchQuery> = (props) => {
     `),
     {
       notifyOnNetworkStatusChange: true,
-      context: { fetchOptions: { method: "GET" } },
+      context: {
+        fetchOptions: {
+          method: process.env.NEXT_PUBLIC_SITE_API_METHOD || "GET",
+        },
+      },
       variables: {
         search,
         first: GET_CATEGORIES_FIRST_COMMON,

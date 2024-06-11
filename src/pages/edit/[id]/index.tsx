@@ -19,6 +19,7 @@ import CreateBtn from "@/components/Header/CreateBtn";
 import errorHandling from "@/utils/errorHandling";
 import { useSelector } from "react-redux";
 import { RootState } from "@/stores/store";
+import { PostStyleTemplate } from "@/components/PostSubmissionEditor/PostOptionsBtn";
 
 const Page: FaustPage<{}> = (props) => {
   const { isReady, isAuthenticated } = useSelector(
@@ -40,7 +41,11 @@ const Page: FaustPage<{}> = (props) => {
       {
         client,
         fetchPolicy: "network-only",
-        context: { fetchOptions: { method: "GET" } },
+        context: {
+          fetchOptions: {
+            method: process.env.NEXT_PUBLIC_SITE_API_METHOD || "GET",
+          },
+        },
         onError: (error) => {
           if (refetchTimes > 3) {
             errorHandling(error);
@@ -120,8 +125,8 @@ const Page: FaustPage<{}> = (props) => {
 
   const renderHeader = () => {
     return (
-      <div className="relative w-full lg:mx-auto lg:max-w-7xl lg:px-8">
-        <div className="flex h-16 items-center gap-x-4 border-b border-neutral-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-0 lg:shadow-none">
+      <div className="relative w-full lg:mx-auto lg:max-w-7xl lg:px-8 z-20">
+        <div className="flex h-16 items-center gap-x-4 border-b border-neutral-200 dark:border-neutral-600 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-0 lg:shadow-none">
           <div className="flex flex-1 gap-4 self-stretch lg:gap-6">
             <div className="relative flex items-center flex-1">
               <Logo />
@@ -129,7 +134,7 @@ const Page: FaustPage<{}> = (props) => {
             <div className="flex items-center gap-x-4 lg:gap-x-6">
               {/* Separator */}
               <div
-                className="hidden lg:block lg:h-6 lg:w-px lg:bg-neutral-200"
+                className="hidden lg:block lg:h-6 lg:w-px lg:bg-neutral-200 lg:dark:bg-neutral-600"
                 aria-hidden="true"
               />
 
@@ -164,6 +169,10 @@ const Page: FaustPage<{}> = (props) => {
               databaseId: featuredImage?.databaseId || 0,
             }}
             defaultPostOptionsData={{
+              showRightSidebar: ncPostMetaData?.showRightSidebar || false,
+              postStyleSelected:
+                (ncPostMetaData?.template?.[0] as PostStyleTemplate) ||
+                "style1",
               timeSchedulePublication: status === "inherit" ? date : undefined,
               audioUrl: ncmazAudioUrl?.audioUrl || "",
               excerptText: excerpt,

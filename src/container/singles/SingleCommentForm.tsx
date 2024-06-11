@@ -3,7 +3,8 @@ import ButtonPrimary from "@/components/Button/ButtonPrimary";
 import Textarea from "@/components/Textarea/Textarea";
 import Button from "@/components/Button/Button";
 import { CommentWrapContext } from "./SingleCommentWrap";
-import { useLoginModal } from "../LoginModalProvider";
+import { useLoginModal } from "@/hooks/useLoginModal";
+
 import { useSelector } from "react-redux";
 import { RootState } from "@/stores/store";
 import getTrans from "@/utils/getTrans";
@@ -34,7 +35,7 @@ const SingleCommentForm: FC<SingleCommentFormProps> = ({
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
   const T = getTrans();
   //
-  const { isLoginModalOpen, openLoginModal } = useLoginModal();
+  const { openLoginModal } = useLoginModal();
   const { isReady, isAuthenticated } = useSelector(
     (state: RootState) => state.viewer.authorizedUser
   );
@@ -70,7 +71,7 @@ const SingleCommentForm: FC<SingleCommentFormProps> = ({
 
   // open login modal when click textarea/submit if not login
   const handleClickWhenNotLogin = () => {
-    if (!isReady || isLoginModalOpen) {
+    if (!isReady) {
       return;
     }
     if (!isAuthenticated) {

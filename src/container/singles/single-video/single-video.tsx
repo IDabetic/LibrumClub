@@ -48,6 +48,7 @@ const SingleTypeVideo: FC<Props> = ({ post }) => {
           src={featuredImage?.sourceUrl || ""}
           alt={title}
           priority
+          enableDefaultPlaceholder
           sizes="(max-width: 1024px) 100vw, 1240px"
           fill
         />

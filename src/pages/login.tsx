@@ -3,10 +3,7 @@ import Error from "@/components/Error";
 import Input from "@/components/Input/Input";
 import Label from "@/components/Label/Label";
 import LoginLayout from "@/container/login/LoginLayout";
-import {
-  IS_CHISNGHIAX_DEMO_SITE,
-  NC_SITE_SETTINGS,
-} from "@/contains/site-settings";
+import { IS_CHISNGHIAX_DEMO_SITE } from "@/contains/site-settings";
 import { RootState } from "@/stores/store";
 import getTrans from "@/utils/getTrans";
 import { useLogin } from "@faustwp/core";
@@ -28,19 +25,6 @@ export default function Login() {
   }
 
   const errorMessage = error?.message || data?.generateAuthorizationCode.error;
-
-  const handleClickLostPassword = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (
-      NC_SITE_SETTINGS.signIn_page.lost_password
-        .is_use_lostpassword_default_of_wp === false
-    ) {
-      e.preventDefault();
-      toast.error(NC_SITE_SETTINGS.signIn_page.lost_password.message, {
-        position: "bottom-center",
-      });
-      return;
-    }
-  };
 
   return (
     <LoginLayout
@@ -111,23 +95,17 @@ export default function Login() {
           {T["Not a member?"]}{" "}
           <Link
             href="/sign-up"
-            className="font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 hover:underline underline-offset-2"
+            className="text-primary-600 hover:text-primary-500 dark:text-primary-400 hover:underline underline-offset-2"
           >
-            {T["Sign up"]}!
+            {T["Sign up"]}
           </Link>
           <span className="mx-1">|</span>
-          <a
-            href={
-              NC_SITE_SETTINGS.signIn_page.lost_password
-                .url_lostpassword_default_of_wp
-            }
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 hover:underline underline-offset-2"
-            onClick={handleClickLostPassword}
+          <Link
+            href="/reset-password"
+            className="text-primary-600 hover:text-primary-500 dark:text-primary-400 hover:underline underline-offset-2"
           >
             {T["Lost your password?"]}
-          </a>
+          </Link>
         </p>
       </>
     </LoginLayout>

@@ -79,6 +79,7 @@ const Category: FaustTemplate<PageCategoryGetCategoryQuery> = (props) => {
                     fill
                     className="object-cover"
                     priority
+                    enableDefaultPlaceholder
                   />
                 )}
                 {!ncTaxonomyMeta?.featuredImage?.node && (
